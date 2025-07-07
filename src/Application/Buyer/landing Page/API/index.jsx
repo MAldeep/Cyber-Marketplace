@@ -15,3 +15,18 @@ export const importLogo = async () => {
     return null;
   }
 };
+
+export const importHero = async () => {
+  try {
+    const res = await axios.get(baseUrl + "/api/heroes", {
+      params: {
+        populate: "*",
+      },
+    });
+    const heroImages = res.data.data;
+    return heroImages;
+  } catch (err) {
+    console.error("Error importing images", err);
+    return null;
+  }
+};

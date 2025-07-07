@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "../Buyer/landing Page/Ui/components/header/Header";
+import LandingPage from "../Buyer/landing Page/Ui/page/LandingPage";
 
 export default function AllRoutes() {
   return (
@@ -7,7 +7,7 @@ export default function AllRoutes() {
       <BrowserRouter>
         <Routes>
           {/* Main Routes */}
-          <Route path="/" element={<Header/>} />
+          <Route path="/" element={<LandingPage/>} />
           <Route path="/register" element={<h1>Register Page</h1>} />
           <Route path="/login" element={<h1>Login Page</h1>} />
           {/* Buyer Routes */}
