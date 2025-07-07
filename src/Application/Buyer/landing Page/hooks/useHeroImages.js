@@ -15,7 +15,7 @@ const useHeroImages = () => {
     };
     fetchHeroImages();
   }, []);
-  const [identityImage, AllProductsImage, ownerImage] = heroImages;
-  return { identityImage, AllProductsImage , ownerImage };
+  const [identityImage,ownerImage, AllProductsImage ] = heroImages;
+  return { identityImage,ownerImage, AllProductsImage };
 };
 export default useHeroImages;
