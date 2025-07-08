@@ -2,7 +2,7 @@ import { Form, Formik } from "formik";
 import initialValues from "../../hooks/useInitialValues";
 import validationSchema from "../../hooks/useValidate";
 import handleSubmit from "../../hooks/useSubmitHandler";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserNameField from "./UserNameField";
 import EmailField from "./EmailField";
 import PhoneNumberField from "./PhoneNumberField";
@@ -19,18 +19,19 @@ export default function RegisterForm() {
         initialValues={initialValues}
         onSubmit={(values, actions) => handleSubmit(values, actions, navigate)}
       >
-        {
-          ({ touched, errors, isValid, dirty })=>(
-          <Form  className="flex flex-col gap-5 w-full rounded-2xl shadow-2xl p-14 bg-gray-100">
-          <UserNameField touched={touched} errors={errors}/>
-          <EmailField touched={touched} errors={errors}/>
-          <PhoneNumberField touched={touched} errors={errors}/>
-          <PasswordField touched={touched} errors={errors}/>
-          <ConfirmPassword touched={touched} errors={errors}/>
-          <SubmitBtn isValid={isValid} dirty={dirty}/>
-        </Form>
-          )
-        }
+        {({ touched, errors, isValid, dirty }) => (
+          <Form className="flex flex-col gap-5 w-full rounded-2xl shadow-2xl p-14 bg-gray-100">
+            <UserNameField touched={touched} errors={errors} />
+            <EmailField touched={touched} errors={errors} />
+            <PhoneNumberField touched={touched} errors={errors} />
+            <PasswordField touched={touched} errors={errors} />
+            <ConfirmPassword touched={touched} errors={errors} />
+            <SubmitBtn isValid={isValid} dirty={dirty} />
+            <Link to={"/login"} className="text-[rgba(0,0,0,0.5)]">
+              already Registered ? <span className="underline">Sign In</span>
+            </Link>
+          </Form>
+        )}
       </Formik>
     </div>
   );
