@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "../Buyer/landing Page/Ui/page/LandingPage";
 import RegisterPage from "../Buyer/register Page/Ui/page/registerPage";
+import LoginForm from "../Buyer/Login Page/Ui/components/LoginForm";
+import LoginPage from "../Buyer/Login Page/Ui/page/LoginPage";
 
 export default function AllRoutes() {
   return (
@@ -8,9 +10,9 @@ export default function AllRoutes() {
       <BrowserRouter>
         <Routes>
           {/* Main Routes */}
-          <Route path="/" element={<LandingPage/>} />
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path="/login" element={<h1>Login Page</h1>} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
           {/* Buyer Routes */}
           <Route path="/explore" element={<h1>All Products Page</h1>} />
           <Route path="/wishList" element={<h1>Wishlist Page</h1>} />

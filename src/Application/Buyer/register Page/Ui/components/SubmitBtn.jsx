@@ -14,7 +14,7 @@ export default function SubmitBtn({ isValid, dirty }) {
       type="submit"
       disabled={!isValid || !dirty}
     >
-      Register
+      Submit
     </button>
   );
 }

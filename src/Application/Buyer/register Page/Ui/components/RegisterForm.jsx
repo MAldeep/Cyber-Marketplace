@@ -13,7 +13,7 @@ import SubmitBtn from "./SubmitBtn";
 export default function RegisterForm() {
   const navigate = useNavigate();
   return (
-    <div className="w-1/2">
+    <div className="w-full lg:w-1/2">
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
@@ -21,6 +21,7 @@ export default function RegisterForm() {
       >
         {({ touched, errors, isValid, dirty }) => (
           <Form className="flex flex-col gap-5 w-full rounded-2xl shadow-2xl p-14 bg-gray-100">
+            <h1 className="text-3xl font-[700]">Register Now</h1>
             <UserNameField touched={touched} errors={errors} />
             <EmailField touched={touched} errors={errors} />
             <PhoneNumberField touched={touched} errors={errors} />
