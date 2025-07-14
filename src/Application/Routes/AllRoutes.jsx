@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "../Buyer/landing Page/Ui/page/LandingPage";
 import RegisterPage from "../Buyer/register Page/Ui/page/registerPage";
-import LoginForm from "../Buyer/Login Page/Ui/components/LoginForm";
 import LoginPage from "../Buyer/Login Page/Ui/page/LoginPage";
+import ExplorePage from "../Buyer/explore Page/Ui/page/ExplorePage";
+import NewCompany from "../Company_owner/Register New Company/UI/page/NewCompany";
 
 export default function AllRoutes() {
   return (
@@ -14,7 +15,7 @@ export default function AllRoutes() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* Buyer Routes */}
-          <Route path="/explore" element={<h1>All Products Page</h1>} />
+          <Route path="/explore" element={<ExplorePage/>} />
           <Route path="/wishList" element={<h1>Wishlist Page</h1>} />
           <Route path="/:productId" element={<h1>Single Product Page</h1>} />
           <Route path="/cart" element={<h1>Cart Page</h1>} />
@@ -24,8 +25,9 @@ export default function AllRoutes() {
           {/* Compnay Owner Routes */}
           <Route
             path="/creatingCompanyProfile"
-            element={<h1>Creating company Profile</h1>}
+            element={<NewCompany/>}
           />
+          <Route path="/companyProfile" element={<h1>Single company profile</h1>}/>
           <Route path="/dashboard" element={<h1>Dashboard Page</h1>} />
           <Route path="/allEmployees" element={<h1>All Employees Page</h1>} />
           <Route
