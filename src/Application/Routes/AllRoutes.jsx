@@ -4,6 +4,7 @@ import RegisterPage from "../Buyer/register Page/Ui/page/registerPage";
 import LoginPage from "../Buyer/Login Page/Ui/page/LoginPage";
 import ExplorePage from "../Buyer/explore Page/Ui/page/ExplorePage";
 import NewCompany from "../Company_owner/Register New Company/UI/page/NewCompany";
+import DashBoard from "../Company_owner/DashBoard/UI/page/DashBoard";
 
 export default function AllRoutes() {
   return (
@@ -28,7 +29,7 @@ export default function AllRoutes() {
             element={<NewCompany/>}
           />
           <Route path="/companyProfile" element={<h1>Single company profile</h1>}/>
-          <Route path="/dashboard" element={<h1>Dashboard Page</h1>} />
+          <Route path="/dashboard" element={<DashBoard/>} />
           <Route path="/allEmployees" element={<h1>All Employees Page</h1>} />
           <Route
             path="/addingNewEmployee"

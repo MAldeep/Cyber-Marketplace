@@ -6,6 +6,12 @@ export default function ExplorePage() {
       <Link
       to={"/creatingCompanyProfile"}
       className="p-3 rounded-3xl bg-black text-white">Register your company</Link>
+      <Link
+      to={"/dashboard"}
+      className="p-3 rounded-3xl bg-black text-white"
+      >
+        DashBoard
+      </Link>
     </div>
   )
 }

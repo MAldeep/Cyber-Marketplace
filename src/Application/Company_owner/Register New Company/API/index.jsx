@@ -1,5 +1,3 @@
-// src/api/companyApi.js
-
 import axios from 'axios';
 import { baseUrl } from '../../../shared/baseUrl';
 
@@ -27,7 +25,6 @@ export const createCompany = async (companyData, token) => {
     headers: {
       Authorization: `Bearer ${token}`
     }
-  });
-
+  })
   return response.data;
 };

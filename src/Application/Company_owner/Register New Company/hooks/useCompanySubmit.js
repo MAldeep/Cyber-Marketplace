@@ -1,12 +1,14 @@
 import { jwtDecode } from "jwt-decode";
 import { createCompany, uploadLogo } from "../API";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 export const useSubmitCompanyForm = () => {
   const cookies = new Cookies();
   const token = cookies.get("token");
   const user = token ? jwtDecode(token) : null;
   const ownerId = user?.id;
+  const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
     try {
@@ -20,18 +22,18 @@ export const useSubmitCompanyForm = () => {
         description: values.description,
         logo: logoId,
         owner: ownerId,
-        // still can't find the way to post those "400error"
-        // categories: values.categories,
-        // products: values.products,
-        // employees: values.employees,
+        categories: values.categories,
+        products: values.products,
+        employees: values.employees,
       };
 
       const result = await createCompany(payload, token);
       console.log("✅ Company created:", result);
       actions.resetForm();
+      navigate("/dashboard");
     } catch (err) {
       console.error(
-        "❌ Error creating company:",
+        "Error creating company:",
         err.response?.data || err.message
       );
     } finally {
