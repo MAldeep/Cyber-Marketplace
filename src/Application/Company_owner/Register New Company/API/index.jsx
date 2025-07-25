@@ -13,7 +13,6 @@ export const uploadLogo = async (file, token) => {
       'Content-Type': 'multipart/form-data'
     }
   });
-
   return response.data[0]?.id;
 };
 

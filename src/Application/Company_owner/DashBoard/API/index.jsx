@@ -24,3 +24,18 @@ export const gettingUser = async (token) => {
   const companies = companyRes.data.data;
   return { companies, userData };
 };
+
+// creating new products 
+export const creatingProduct = async (token, productData) => {
+  const response = await axios.post(baseUrl+"/api/products",
+    {
+      data : productData,
+    },
+    {
+      headers : {
+        Authorization : `Bearer ${token}`
+      }
+    }
+  );
+  return response;
+}

@@ -1,9 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../../shared/baseUrl";
 import useAuthorization from "../../hooks/useAuthorization";
 import { selectCompany } from "../../hooks/useSelectCompay";
+import useLogo from "../../../../Buyer/landing Page/hooks/useLogo";
+import CompanySelectionCard from "./CompanySelectionCard";
 
 export default function SelectCompany() {
+  const {logo} = useLogo();
   const { allCompanies } = useAuthorization();
   const navigate = useNavigate();
   const handleSelect = async (id) => {
@@ -15,15 +18,22 @@ export default function SelectCompany() {
     }
   };
   return (
-    <div>
-      <h1>Log in as : </h1>
-      <div>
+    <div className="w-full bg-gray-50 min-h-[100dvh] flex flex-col justify-between items-center gap-8 pb-30">
+      <header className="w-full bg-white py-[24px] lg:py-[16px] px-[16px] lg:px-[160px] flex justify-center items-center shadow-2xs">
+        <Link to={"/"}>
+          <img src={logo} />
+        </Link>
+      </header>
+      <h1 className="font-bold text-5xl text-gray-700">Log in as : </h1>
+      <div className="w-full flex flex-col lg:flex-row gap-5 px-[20px] lg:px-[100px] flex-wrap justify-between">
         {allCompanies &&
           allCompanies.map((el) => (
-            <img
+            <CompanySelectionCard
               key={el.documentId}
-              onClick={() => handleSelect(el.id)}
-              src={baseUrl + el.logo.url}
+              action={() => handleSelect(el.id)}
+              image={baseUrl + el.logo.url}
+              name={el.name}
+              des={el.description}
             />
           ))}
       </div>

@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EmailField from "../../../register Page/Ui/components/EmailField";
 import PasswordField from "../../../register Page/Ui/components/PasswordField";
 import handleLoginUser from "../../hooks/useLoginUser";
@@ -23,6 +23,10 @@ export default function LoginForm() {
             <EmailField touched={touched} errors={errors} />
             <PasswordField touched={touched} errors={errors} />
             <SubmitBtn isValid={isValid} dirty={dirty} />
+            <Link to={"/register"} className="text-[rgba(0,0,0,0.5)]">
+              Don't have an account ?{" "}
+              <span className="underline">Register Now</span>
+            </Link>
           </Form>
         )}
       </Formik>
