@@ -10,32 +10,56 @@ export const gettingUser = async (token) => {
     },
   });
   const userData = userRes.data;
-  const companyRes = await axios.get(
-    baseUrl + `/api/companies?filters[owner][id][$eq]=${userData.id}`,
-    {
-      headers: {
-        Authorization: `bearer ${token}`,
-      },
-      params: {
-        populate: "*",
-      },
-    }
-  );
+  const companyRes = await axios.get(baseUrl + `/api/companies`, {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+    params: {
+      "filters[owner][id][$eq]": userData.id,
+      populate: "*",
+    },
+  });
   const companies = companyRes.data.data;
   return { companies, userData };
 };
 
-// creating new products 
-export const creatingProduct = async (token, productData) => {
-  const response = await axios.post(baseUrl+"/api/products",
+// creating new products
+export const creatingProduct = async (token, productData, companyId) => {
+  const response = await axios.post(
+    baseUrl + "/api/products",
     {
-      data : productData,
+      data: {
+        ...productData,
+        company: companyId,
+        publishedAt: new Date().toISOString(),
+      },
     },
     {
-      headers : {
-        Authorization : `Bearer ${token}`
-      }
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
   );
   return response;
-}
+};
+
+// getting company products
+export const gettingCompanyProducts = async (token, companyId) => {
+  try {
+    const response = await axios.get(`${baseUrl}/api/products`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        populate: "*",
+        "filters[company][documentId][$eq]": companyId, // ✅ change here
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    console.error("Failed to get products:", err);
+    return [];
+  }
+};
+
+

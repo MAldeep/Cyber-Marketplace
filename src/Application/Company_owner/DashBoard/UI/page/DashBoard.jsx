@@ -1,21 +1,18 @@
 import { Link } from "react-router-dom";
-import { baseUrl } from "../../../../shared/baseUrl";
 import useAuthorization from "../../hooks/useAuthorization";
 import useLogo from "../../../../Buyer/landing Page/hooks/useLogo";
-import AddProductModal from "../components/add new product/AddProductModal";
-import Cookies from "universal-cookie";
-import { useState } from "react";
+import ShowTheModal from "../components/ShowTheModal";
+import DashboardProducts from "../components/DashboardProducts";
 
 export default function DashBoard() {
-  const cookies = new Cookies();
-  const token = cookies.get("token");
-  const [addProductModal, setaddProductModal] = useState(false);
   const { logo } = useLogo();
   const { authorized, user, company } = useAuthorization();
+  const ownerCompany = Array.isArray(company) ? company[0] : company;
+  const companyId = ownerCompany?.documentId;
   if (authorized === null) return <div>Loading ...</div>;
   if (!authorized) return null;
-  const ownerCompany = company[0] || company;
-  console.log(ownerCompany);
+  console.log(companyId);
+
   return (
     <div className="relative h-full">
       <header className="w-full bg-white py-[24px] lg:py-[16px] px-[16px] lg:px-[160px] flex justify-center items-center shadow-2xs">
@@ -27,16 +24,13 @@ export default function DashBoard() {
           <img src={logo} />
         </Link>
       </header>
-      DashBoard welcome {user.username}
-      <img src={baseUrl + ownerCompany.logo.url} />
-      <button onClick={() => setaddProductModal(true)}>Add new Product</button>
-      {addProductModal && (
-        <AddProductModal
-          token={token}
-          companyId={ownerCompany.id}
-          onClose={() => setaddProductModal(false)}
-        />
-      )}
+      <main className="w-full h-auto px-[20px] lg:px-[160px] py-[30px] flex flex-col gap-6">
+        <h1>Hello {user.username}</h1>
+        <section className="w-full flex flex-col gap-2.5">
+          <ShowTheModal ownerCompany={ownerCompany} />
+          <DashboardProducts companyId={companyId} />
+        </section>
+      </main>
     </div>
   );
 }
