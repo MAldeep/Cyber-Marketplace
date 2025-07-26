@@ -1,1 +1,5 @@
 @import "tailwindcss";
+.custom-swiper .swiper-pagination {
+  bottom: 0px !important; /* adjust the distance as needed */
+  position: relative; /* can also try absolute if needed */
+}

@@ -18,14 +18,14 @@ export default function SelectCompany() {
     }
   };
   return (
-    <div className="w-full bg-gray-50 min-h-[100dvh] flex flex-col justify-between items-center gap-8 pb-30">
+    <div className="w-full bg-gray-50 min-h-[100dvh] flex flex-col justify-between items-center gap-8 pb-10">
       <header className="w-full bg-white py-[24px] lg:py-[16px] px-[16px] lg:px-[160px] flex justify-center items-center shadow-2xs">
         <Link to={"/"}>
           <img src={logo} />
         </Link>
       </header>
-      <h1 className="font-bold text-5xl text-gray-700">Log in as : </h1>
-      <div className="w-full flex flex-col lg:flex-row gap-5 px-[20px] lg:px-[100px] flex-wrap justify-between">
+      <h1 className="font-bold text-3xl text-gray-700">Log in as : </h1>
+      <div className="w-full flex flex-col lg:flex-row gap-12 px-[20px] lg:px-[100px] flex-wrap justify-center">
         {allCompanies &&
           allCompanies.map((el) => (
             <CompanySelectionCard

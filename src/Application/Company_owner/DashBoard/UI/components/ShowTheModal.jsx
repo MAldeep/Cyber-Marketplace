@@ -10,7 +10,7 @@ export default function ShowTheModal({ownerCompany}) {
     <div>
       <button
       className="w-full bg-black text-white py-3 rounded-2xl cursor-pointer"
-      onClick={() => setaddProductModal(true)}>Add new Product</button>
+      onClick={() => setaddProductModal(true)}>Add New Product</button>
       {addProductModal && (
         <AddProductModal
           token={token}
