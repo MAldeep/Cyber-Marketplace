@@ -1,13 +1,21 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay,  Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import useFetchingProducts from "../../hooks/useFetchingProducts";
 import { baseUrl } from "../../../../shared/baseUrl";
+import ProductDetails from "./ProductDetails";
+import { useEffect, useState } from "react";
 
 export default function DashboardProducts({ companyId }) {
-  const { products } = useFetchingProducts(companyId);
-
+  const { products : fetchedProducts } = useFetchingProducts(companyId);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    setProducts(fetchedProducts);
+  }, [fetchedProducts]);
+  const handleDeleteSuccess = (deletedId) => {
+    setProducts((prev) => prev.filter((p) => p.documentId !== deletedId));
+  };
   return (
     <div className="w-full py-5 flex flex-col justify-center items-center gap-4 px-3 rounded-2xl">
       {products.length > 0 ? (
@@ -29,7 +37,7 @@ export default function DashboardProducts({ companyId }) {
         >
           {products.map((p) => (
             <SwiperSlide key={p.id}>
-              <div className="w-full bg-gray-50 p-3 rounded-2xl flex flex-col gap-2.5">
+              <div className="w-full bg-gray-50 p-3 rounded-2xl flex flex-col justify-between gap-2.5 h-[650px]">
                 {p.images.length > 1 ? (
                   <Swiper
                     // pagination={{ clickable: true }}
@@ -57,9 +65,7 @@ export default function DashboardProducts({ companyId }) {
                     className="w-full h-[200px] object-cover rounded-2xl"
                   />
                 )}
-                <h1>{p.title}</h1>
-                <p>{p.description}</p>
-                <p>{p.price}</p>
+                <ProductDetails product={p} onDeleted={handleDeleteSuccess}/>
               </div>
             </SwiperSlide>
           ))}

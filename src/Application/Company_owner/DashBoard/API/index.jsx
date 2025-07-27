@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { baseUrl } from "../../../shared/baseUrl";
+import Cookies from "universal-cookie";
 
 export const gettingUser = async (token) => {
   const userRes = await axios.get(baseUrl + "/api/users/me?populate=*", {
@@ -62,4 +63,17 @@ export const gettingCompanyProducts = async (token, companyId) => {
   }
 };
 
+// deleting product
 
+export const deleteProduct = async (token, id) => {
+  try {
+    const response = await axios.delete(baseUrl + `/api/products/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.log("Failed to delete the product", err);
+  }
+};
