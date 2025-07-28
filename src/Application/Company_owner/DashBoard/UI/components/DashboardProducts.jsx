@@ -38,7 +38,7 @@ export default function DashboardProducts({ companyId }) {
           {products.map((p) => (
             <SwiperSlide key={p.id}>
               <div className="w-full bg-gray-50 p-3 rounded-2xl flex flex-col justify-between gap-2.5 h-[650px]">
-                {p.images.length > 1 ? (
+                {Array.isArray(p.images) && p.images.length >= 1 && (
                   <Swiper
                     // pagination={{ clickable: true }}
                     autoplay={{
@@ -58,13 +58,7 @@ export default function DashboardProducts({ companyId }) {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                ) : (
-                  <img
-                    src={baseUrl + p.images[0].url}
-                    alt={p.title}
-                    className="w-full h-[200px] object-cover rounded-2xl"
-                  />
-                )}
+                ) }
                 <ProductDetails product={p} onDeleted={handleDeleteSuccess}/>
               </div>
             </SwiperSlide>
