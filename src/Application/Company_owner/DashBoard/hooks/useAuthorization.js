@@ -29,7 +29,7 @@ const useAuthorization = () => {
           setAllCompanies(companies);
           const selectedCompanyId = cookies.get("selectedCompanyId");
           const selectedCompany = companies.find(
-            (c) => c.id === selectedCompanyId
+            (c) => c.documentId === selectedCompanyId
           );
           if (selectedCompany) {
             setCompany(selectedCompany);

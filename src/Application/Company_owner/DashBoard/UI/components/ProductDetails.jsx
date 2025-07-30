@@ -1,6 +1,9 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useDeleteProduct from "../../hooks/useDeleteProduct";
 import toast from "react-hot-toast";
+import { MdModeEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 
 export default function ProductDetails({ product, onDeleted }) {
   const { handleDelete, loading } = useDeleteProduct();
@@ -62,11 +65,18 @@ export default function ProductDetails({ product, onDeleted }) {
       </div>
       <button
         onClick={handleClick}
-        className="bg-red-700 text-2xl w-full flex justify-center items-center gap-2 py-2 rounded-2xl"
+        className="bg-red-700 text-2xl w-full flex justify-center items-center gap-2 py-2 rounded-2xl cursor-pointer"
       >
         <FaTrashAlt />
         {loading ? "Deleting ..." : "Delete"}
       </button>
+      <Link
+      to={`/dashboard/${product.documentId}`}
+      className="bg-blue-600 text-2xl w-full flex justify-center items-center gap-2 py-2 rounded-2xl cursor-pointer"
+      >
+        <MdModeEdit />
+        Edit this Product
+      </Link>
     </div>
   );
 }

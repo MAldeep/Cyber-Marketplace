@@ -30,7 +30,7 @@ export default function SelectCompany() {
           allCompanies.map((el) => (
             <CompanySelectionCard
               key={el.documentId}
-              action={() => handleSelect(el.id)}
+              action={() => handleSelect(el.documentId)}
               image={baseUrl + el.logo.url}
               name={el.name}
               des={el.description}

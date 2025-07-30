@@ -3,6 +3,7 @@
 import axios from "axios";
 import { baseUrl } from "../../../shared/baseUrl";
 import Cookies from "universal-cookie";
+// import Cookies from "universal-cookie";
 
 export const gettingUser = async (token) => {
   const userRes = await axios.get(baseUrl + "/api/users/me?populate=*", {
@@ -53,7 +54,7 @@ export const gettingCompanyProducts = async (token, companyId) => {
       },
       params: {
         populate: "*",
-        "filters[company][documentId][$eq]": companyId, // ✅ change here
+        "filters[company][documentId][$eq]": companyId,
       },
     });
     return response.data.data;
@@ -75,5 +76,27 @@ export const deleteProduct = async (token, id) => {
     return response.data;
   } catch (err) {
     console.log("Failed to delete the product", err);
+  }
+};
+
+// editing product
+export const updateProduct = async (id, updatedData) => {
+  const cookies = new Cookies();
+  const token = cookies.get("token");
+  try {
+    const reponse = await axios.put(
+      baseUrl + `/api/products/${id}`,
+      {data : updatedData}
+    ,
+  {
+    headers : {
+      Authorization : `Bearer ${token}`
+    }
+  }
+  );
+    return reponse.data;
+  } catch (err) {
+    console.log("failed API", err);
+    throw err;
   }
 };
