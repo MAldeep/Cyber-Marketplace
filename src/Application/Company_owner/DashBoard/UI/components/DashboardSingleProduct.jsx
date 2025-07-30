@@ -22,7 +22,6 @@ export default function DashboardSingleProduct() {
         <SingleProductCard product={product}/>
       </div>
       </div>
-
     </div>
   );
 }

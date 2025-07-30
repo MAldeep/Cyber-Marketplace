@@ -7,12 +7,15 @@ import { MdModeEdit } from "react-icons/md";
 import { useState } from "react";
 import useEditProduct from "../../hooks/useEditProduct";
 import EditFieldModal from "./EditFieldModal";
+import SingleFieldEdit from "./SingleFieldEdit";
 
 export default function SingleProductCard({ product, refresh }) {
   const [openField, setOpenField] = useState(null);
   const [productData, setProductData] = useState(product);
   const { editProduct } = useEditProduct();
-
+  const date = new Date(product.createdAt);
+  const formattedDate = date.toLocaleDateString(); // e.g. "7/30/2025"
+  const formattedTime = date.toLocaleTimeString(); // e.g. "12:15:45 PM"
   const handleSave = async (newValue) => {
     if (!openField) return;
     const update = { [openField]: newValue };
@@ -23,6 +26,7 @@ export default function SingleProductCard({ product, refresh }) {
     }
     setOpenField(null);
   };
+  console.log(product);
   return (
     <div className="w-full flex flex-col lg:flex-row gap-10">
       <Swiper
@@ -44,20 +48,24 @@ export default function SingleProductCard({ product, refresh }) {
         ))}
       </Swiper>
       <div className="w-full lg:w-1/2 flex flex-col gap-3.5 justify-start">
-        <div className="w-full flex justify-between items-center">
-          <div className="flex flex-col gap-1">
-            <label className="text-gray-500 text-sm">Product Name</label>
-            <h1 className="text-gray-800 text-4xl font-bold">
-              {product.title}
-            </h1>
-          </div>
-          <button 
-          onClick={() => setOpenField("title")}
-          className="flex justify-center items-center gap-1.5 bg-blue-700 px-4 py-2 rounded-2xl text-white">
-            {/* Edit */}
-            <MdModeEdit />
-          </button>
-        </div>
+        <SingleFieldEdit
+          setOpenField={setOpenField}
+          field={"title"}
+          label={"Product Name"}
+          segment={product.title}
+        />
+        <SingleFieldEdit
+          setOpenField={setOpenField}
+          field={"price"}
+          label={"Product Price"}
+          segment={product.price}
+        />
+        <SingleFieldEdit
+          setOpenField={setOpenField}
+          field={"inStock"}
+          label={"In Stock"}
+          segment={`${product.inStock}`}
+        />
         <EditFieldModal
           isOpen={!!openField}
           fieldName={openField}
