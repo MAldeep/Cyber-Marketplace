@@ -22,10 +22,7 @@ export default function ProductDetails({ product, onDeleted }) {
         <label className="text-gray-600 text-[14px]">Product Name</label>
         <h1 className="text-gray-900 text-4xl">{product.title}</h1>
       </div>
-      <div className="flex flex-col gap-1">
-        <label className="text-gray-600 text-[14px]">Product Description</label>
-        <h2 className="text-gray-500 text-sm">{product.description}</h2>
-      </div>
+
       <div>
         <label className="text-gray-600 text-[14px]">Product Price</label>
         <p
@@ -37,7 +34,7 @@ export default function ProductDetails({ product, onDeleted }) {
           }
           `}
         >
-          {product.price}
+          {product.price} $
         </p>
       </div>
       {product.discountPercentage && (
@@ -47,12 +44,12 @@ export default function ProductDetails({ product, onDeleted }) {
               Discount Percentage
             </label>
             <p className="text-amber-300 text-2xl">
-              {product.discountPercentage}
+              {product.discountPercentage} %
             </p>
           </div>
           <div>
             <label className="text-gray-600 text-[14px]">Final Price</label>
-            <p className="text-blue-600 text-2xl">{product.finalPrice}</p>
+            <p className="text-blue-600 text-2xl">{product.finalPrice} $</p>
           </div>
         </div>
       )}
