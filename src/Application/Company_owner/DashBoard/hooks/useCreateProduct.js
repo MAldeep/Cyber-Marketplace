@@ -53,7 +53,7 @@ const useCreateProduct = () => {
         category: categoryId,
       };
 
-      const response = await creatingProduct(token, productData, companyId);
+      const response = await creatingProduct(token, productData, companyId );
       setCreatedProduct(response.data);
       return response.data;
 

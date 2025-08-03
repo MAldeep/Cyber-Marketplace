@@ -26,24 +26,37 @@ export const gettingUser = async (token) => {
 };
 
 // creating new products
-export const creatingProduct = async (token, productData, companyId) => {
+export const creatingProduct = async (token, productData, companyId ) => {
   const response = await axios.post(
     baseUrl + "/api/products",
     {
       data: {
         ...productData,
         company: companyId,
+        // category : categoryId,
         publishedAt: new Date().toISOString(),
       },
     },
     {
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     }
   );
   return response;
 };
+// getting all categories 
+export const gettingCategories = async (token) =>{
+  const response = await axios.get(baseUrl+"/api/categories", 
+    {
+      headers : {
+        Authorization : `Bearer ${token}`
+      }
+    }
+  );
+  return response.data.data;
+}
 
 // getting company products
 export const gettingCompanyProducts = async (token, companyId) => {

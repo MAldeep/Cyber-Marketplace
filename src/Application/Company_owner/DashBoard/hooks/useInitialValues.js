@@ -5,6 +5,7 @@ const initialValues = {
     discountPercentage: 0,
     inStock: true,
     specifications: "",
-    images: []
+    images: [],
+    category: "",
 };
 export default initialValues;

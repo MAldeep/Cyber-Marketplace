@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
+import { SidebarProvider } from "../../context/SideBarContext";
+import ExploreHeader from "../components/ExploreHeader";
+import SideMenuExplore from "../components/SideMenuExplore";
 
 export default function ExplorePage() {
   return (
-    <div className="w-full flex items-center justify-center bg-gray-200 h-[100dvh]">
-      <Link
-      to={"/creatingCompanyProfile"}
-      className="p-3 rounded-3xl bg-black text-white">Register your company</Link>
-      <Link
-      to={"/dashboard"}
-      className="p-3 rounded-3xl bg-black text-white"
-      >
-        DashBoard
-      </Link>
-    </div>
-  )
+    <SidebarProvider>
+      <header className="w-full flex flex-col gap-7 items-center justify-start relative bg-gray-100 h-[100dvh] overflow-hidden">
+        <ExploreHeader />
+        <SideMenuExplore />
+      </header>
+      <main>
+        
+      </main>
+    </SidebarProvider>
+  );
 }

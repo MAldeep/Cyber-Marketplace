@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import useCreateProduct from "../../../hooks/useCreateProduct";
 import initialValues from "../../../hooks/useInitialValues";
 import validationSchema from "../../../hooks/useValidateNewProduct";
@@ -11,6 +11,7 @@ import ProductSpecs from "./ProductSpecs";
 import ProductImages from "./ProductImages";
 import SubmitBtn from "./SubmitBtn";
 import toast from "react-hot-toast";
+import ProductCategories from "./ProductCategories";
 
 export default function AddProductModal({ token, companyId, onClose }) {
   const { handleSubmit } = useCreateProduct();
@@ -35,6 +36,7 @@ export default function AddProductModal({ token, companyId, onClose }) {
       specifications: specsObj,
       images: values.images,
       companyId,
+      categoryId : values.category,
     });
     if (created) {
       toast.success("Product added successfully");
@@ -42,7 +44,7 @@ export default function AddProductModal({ token, companyId, onClose }) {
       if (onClose) onClose();
     } else {
       toast.error("Failed to create product");
-    } 
+    }
   };
   return (
     <div className="w-full h-full fixed top-0 left-0 bg-[rgba(0,0,0,0.4)] z-50 p-1 flex justify-center items-center ">
@@ -67,6 +69,7 @@ export default function AddProductModal({ token, companyId, onClose }) {
             <ProductPrice touched={touched} errors={errors} />
             <ProductDiscount touched={touched} errors={errors} />
             <ProductInStock touched={touched} errors={errors} />
+            <Field name="category" component={ProductCategories} />
             <ProductSpecs touched={touched} errors={errors} />
             <ProductImages setFieldValue={setFieldValue} values={values} />
             <SubmitBtn
