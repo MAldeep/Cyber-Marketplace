@@ -62,7 +62,7 @@ export default function AddProductModal({ token, companyId, onClose }) {
           dirty,
           isSubmitting,
         }) => (
-          <Form className="flex flex-col gap-1.5 bg-white w-full h-10/12 lg:h-full lg:w-1/2 rounded-2xl overflow-scroll lg:overflow-hidden p-3">
+          <Form className="flex flex-col gap-1.5 bg-white w-full h-10/12 lg:h-full lg:w-1/2 rounded-2xl overflow-scroll lg:overflow-scroll p-3">
             <h1 className="text-3xl font-bold">Add New Product</h1>
             <ProductTitle touched={touched} errors={errors} />
             <ProductDes touched={touched} errors={errors} />

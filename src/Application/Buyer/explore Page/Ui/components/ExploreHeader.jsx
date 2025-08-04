@@ -8,7 +8,7 @@ export default function ExploreHeader() {
   const { logo } = useLogo();
   const { toggleSidebar } = useSideBar();
   return (
-    <header className="w-full flex justify-between items-center px-[16px] py-[32px] lg:px-[160px] lg:py-[20px] bg-white">
+    <header className="w-full flex justify-between items-center px-[16px] py-[32px] lg:px-[160px] lg:py-[20px] bg-white border border-t-0 border-x-0 border-b-[#B5B5B5]">
       <img src={logo} />
       <GiHamburgerMenu
         onClick={toggleSidebar}

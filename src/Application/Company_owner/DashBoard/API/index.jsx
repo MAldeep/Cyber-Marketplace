@@ -33,7 +33,6 @@ export const creatingProduct = async (token, productData, companyId ) => {
       data: {
         ...productData,
         company: companyId,
-        // category : categoryId,
         publishedAt: new Date().toISOString(),
       },
     },

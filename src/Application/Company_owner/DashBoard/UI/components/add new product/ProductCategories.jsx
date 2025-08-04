@@ -6,13 +6,13 @@ export default function ProductCategories({ field, form }) {
   if (error) return <p>Error loading categories</p>;
   return (
     <div>
-      <label htmlFor="category">Category</label>
+      <label htmlFor="category" className="pb-1">Category</label>
       <select
         id="category"
         name="category"
         {...field}
         onChange={(e) => form.setFieldValue("category", e.target.value)}
-        className="border rounded-2xl px-2 py-1 w-full"
+        className="border rounded px-2 py-1 w-full"
       >
         <option value="">Select category</option>
         {categories?.map((cat) => (

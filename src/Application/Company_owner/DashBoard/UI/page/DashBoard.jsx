@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import useAuthorization from "../../hooks/useAuthorization";
 import useLogo from "../../../../Buyer/landing Page/hooks/useLogo";
 import ShowTheModal from "../components/ShowTheModal";
@@ -10,14 +9,14 @@ import LogoutDashboard from "../components/LogoutDashboard";
 
 export default function DashBoard() {
   const { logo } = useLogo();
-  const { authorized, user, company } = useAuthorization();
+  const { authorized, user, company, allCompanies } = useAuthorization();
   const ownerCompany = Array.isArray(company) ? company[0] : company;
   const companyId = ownerCompany?.documentId;
   if (authorized === null) return <div>Loading ...</div>;
   if (!authorized) return null;
 
   return (
-    <div className="relative h-full bg-gray-50">
+    <div className="relative min-h-[100dvh] bg-gray-50">
       <DashboardHeader logo={logo} />
       <main className="w-full px-[20px] lg:px-[160px] py-[30px] flex flex-col gap-6">
         <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-4">
@@ -28,7 +27,7 @@ export default function DashBoard() {
               in total ease
             </p>
           </div>
-          <SwitchCompanies />
+          {allCompanies && <SwitchCompanies />}
         </div>
         <section className="w-full flex flex-col gap-2.5 bg-gray-200 px-3 py-4 rounded-2xl shadow-2xl">
           <h2 className="text-gray-500 text-4xl font-bold pl-5">Products :</h2>

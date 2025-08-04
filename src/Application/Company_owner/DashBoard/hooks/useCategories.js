@@ -14,7 +14,6 @@ const useCategories = () => {
       try {
         const data = await gettingCategories(token);
         setCategories(data);
-        console.log(data);
       } catch (err) {
         setError(err.message || "Failed to fetch categories");
       } finally {

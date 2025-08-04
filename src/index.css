@@ -3,3 +3,11 @@
   bottom: 0px !important; /* adjust the distance as needed */
   position: relative; /* can also try absolute if needed */
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
