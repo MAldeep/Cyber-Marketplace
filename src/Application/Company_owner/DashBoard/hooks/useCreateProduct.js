@@ -31,14 +31,10 @@ const useCreateProduct = () => {
         const id = await uploadLogo(file, token);
         imageIds.push(id);
       }
-
       setUploading(false);
-
       // Generate slug from title
       const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-
       const finalPrice = price - (price * discountPercentage / 100);
-
       const productData = {
         title,
         slug,

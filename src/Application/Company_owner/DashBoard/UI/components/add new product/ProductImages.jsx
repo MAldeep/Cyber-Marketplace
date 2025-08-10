@@ -1,13 +1,15 @@
+import { ErrorMessage } from "formik";
+
 export default function ProductImages({ setFieldValue }) {
   return (
     <div className="flex flex-col gap-2.5 pb-1.5">
       <label className="text-gray-600 text-sm font-medium" htmlFor="images">
-        Upload Images:
+        Upload Images: (You must add at least 1)
       </label>
-
       <input
         id="images"
         type="file"
+        name="images"
         multiple
         accept="image/*"
         className="block w-full text-sm text-gray-500 
@@ -20,7 +22,6 @@ export default function ProductImages({ setFieldValue }) {
           setFieldValue("images", Array.from(event.currentTarget.files));
         }}
       />
-
       {/* {values.images.length > 0 && (
         <ul className="mt-2 list-disc list-inside text-sm text-gray-700 space-y-1">
           {values.images.map((file, index) => (

@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import Cookies from "universal-cookie";
 import { gettingCategories } from "../API";
 
 const useCategories = () => {
-  const cookies = new Cookies();
-  const token = cookies.get("token");
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +9,7 @@ const useCategories = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await gettingCategories(token);
+        const data = await gettingCategories();
         setCategories(data);
       } catch (err) {
         setError(err.message || "Failed to fetch categories");
@@ -21,7 +18,7 @@ const useCategories = () => {
       }
     };
     fetch();
-  }, [token]);
+  }, []);
   return { categories, loading, error };
 };
 export default useCategories;

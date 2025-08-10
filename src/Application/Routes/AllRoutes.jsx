@@ -7,6 +7,7 @@ import NewCompany from "../Company_owner/Register New Company/UI/page/NewCompany
 import DashBoard from "../Company_owner/DashBoard/UI/page/DashBoard";
 import SelectCompany from "../Company_owner/DashBoard/UI/components/SelectCompany";
 import DashboardSingleProduct from "../Company_owner/DashBoard/UI/components/DashboardSingleProduct";
+import Profile from "../Buyer/Profile/Ui/page/Profile";
 
 export default function AllRoutes() {
   return (
@@ -22,7 +23,7 @@ export default function AllRoutes() {
           <Route path="/wishList" element={<h1>Wishlist Page</h1>} />
           <Route path="/:productId" element={<h1>Single Product Page-buyer</h1>} />
           <Route path="/cart" element={<h1>Cart Page</h1>} />
-          <Route path="/profile" element={<h1>Settings Page</h1>} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/checkout" element={<h1>Checkout Page</h1>} />
           <Route path="/tracking" element={<h1>Tracking Orders</h1>} />
           {/* Compnay Owner Routes */}

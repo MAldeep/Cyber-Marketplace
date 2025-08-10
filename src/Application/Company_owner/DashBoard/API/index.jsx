@@ -26,7 +26,7 @@ export const gettingUser = async (token) => {
 };
 
 // creating new products
-export const creatingProduct = async (token, productData, companyId ) => {
+export const creatingProduct = async (token, productData, companyId) => {
   const response = await axios.post(
     baseUrl + "/api/products",
     {
@@ -45,17 +45,11 @@ export const creatingProduct = async (token, productData, companyId ) => {
   );
   return response;
 };
-// getting all categories 
-export const gettingCategories = async (token) =>{
-  const response = await axios.get(baseUrl+"/api/categories", 
-    {
-      headers : {
-        Authorization : `Bearer ${token}`
-      }
-    }
-  );
+// getting all categories
+export const gettingCategories = async () => {
+  const response = await axios.get(baseUrl + "/api/categories");
   return response.data.data;
-}
+};
 
 // getting company products
 export const gettingCompanyProducts = async (token, companyId) => {
@@ -98,14 +92,13 @@ export const updateProduct = async (id, updatedData) => {
   try {
     const reponse = await axios.put(
       baseUrl + `/api/products/${id}`,
-      {data : updatedData}
-    ,
-  {
-    headers : {
-      Authorization : `Bearer ${token}`
-    }
-  }
-  );
+      { data: updatedData },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return reponse.data;
   } catch (err) {
     console.log("failed API", err);

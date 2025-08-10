@@ -3,7 +3,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { baseUrl } from "../../../../shared/baseUrl";
-import { MdModeEdit } from "react-icons/md";
 import { useState } from "react";
 import useEditProduct from "../../hooks/useEditProduct";
 import EditFieldModal from "./EditFieldModal";
@@ -38,8 +37,11 @@ export default function SingleProductCard({ product, refresh }) {
         modules={[Pagination, Autoplay]}
         className="w-full lg:w-1/2 h-full"
       >
-        {product.images.map((p, index) => (
-          <SwiperSlide key={index} className="w-full shadow rounded-2xl h-full object-cover">
+        {product?.images?.map((p, index) => (
+          <SwiperSlide
+            key={index}
+            className="w-full shadow rounded-2xl h-full object-cover"
+          >
             <img
               alt={`Product Image ${index + 1}`}
               src={baseUrl + p.url}

@@ -24,6 +24,9 @@ const useAuthorization = () => {
         if (companies.length === 1) {
           setAuthorized(true);
           setCompany(companies);
+          cookies.set("selectedCompanyId", companies[0].documentId, {
+            path: "/",
+          });
         } else if (companies.length > 1) {
           setAuthorized(true);
           setAllCompanies(companies);
@@ -47,7 +50,7 @@ const useAuthorization = () => {
       }
     };
     chechAuth();
-  }, [navigate, token]);
-  return { authorized, user, company , allCompanies};
+  }, [navigate, token ]);
+  return { authorized, user, company, allCompanies };
 };
 export default useAuthorization;

@@ -9,7 +9,7 @@ export default function FilterByCategories() {
   if (loading) return <p>Loading categories...</p>;
   if (error) return <p>Error loading categories</p>;
   return (
-    <div className="w-[400px] mt-10 rounded-2xl max-h-[60dvh] overflow-scroll no-scrollbar relative">
+    <div className="w-full lg:w-[300px] mt-10 rounded-2xl max-h-[60dvh] overflow-scroll no-scrollbar relative">
       <button
         className="w-full flex justify-between items-center p-4  border border-t-0 border-r-0 border-l-0 border-b-[#B5B5B5] sticky top-0 bg-white z-50"
         onClick={() => setIsOpen(!isOpen)}

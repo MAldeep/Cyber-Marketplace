@@ -8,6 +8,7 @@ const validationSchema = Yup.object({
   discountPercentage: Yup.number().min(0).max(100),
   inStock: Yup.boolean(),
   specifications: Yup.string(),
+  images: Yup.array().min(1, "You must provide images for the product").required("You must provide images for the product"),
   category: Yup.string().required("Please select a category"),
 });
 

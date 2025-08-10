@@ -9,15 +9,15 @@ export default function ExplorePage() {
   console.log(products);
   return (
     <SidebarProvider>
-      <SideMenuExplore />
-      <header className="w-full flex flex-col gap-7 items-center justify-start relative bg-gray-100 overflow-hidden">
-        <ExploreHeader />
-      </header>
-      <main className="w-full flex gap-5 justify-start items-start px-[20px] lg:px-[160px] py-[32]x]">
-        <FilterByCategories />
-        <div>jbkuilb</div>
-      </main>
-      <footer></footer>
+      <div className="w-full h-[100dvh] overflow-hidden relative">
+        <SideMenuExplore />
+        <header className="w-full flex flex-col gap-7 items-center justify-start relative bg-gray-100">
+          <ExploreHeader />
+        </header>
+        <main className="w-full flex flex-col lg:flex-row gap-5 justify-start items-start px-[20px] lg:px-[160px] py-[32px]">
+          <FilterByCategories />
+        </main>
+      </div>
     </SidebarProvider>
   );
 }
