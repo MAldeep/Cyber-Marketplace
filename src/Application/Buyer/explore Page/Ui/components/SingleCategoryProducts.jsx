@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import useProductsByCat from "../../hooks/useProductsByCat";
 import { baseUrl } from "../../../../shared/baseUrl";
-import { CiHeart } from "react-icons/ci";
 import { BsCart4 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import AddToWishlist from "./AddToWishlist";
 
 export default function SingleCategoryProducts({ category }) {
   const { products } = useProductsByCat(`${category}`);
@@ -14,9 +14,7 @@ export default function SingleCategoryProducts({ category }) {
     <div className="w-full min-h-[40dvh] py-5 px-3 flex flex-col justify-center items-start rounded-2xl bg-gray-200 gap-2.5">
       <div className="w-full flex justify-between items-center">
         <h1 className="text-2xl text-gray-700 font-bold">{category}</h1>
-        <Link className="text-gray-600 text-sm hover:underline">
-          See all
-        </Link>
+        <Link className="text-gray-600 text-sm hover:underline">See all</Link>
       </div>
       <Swiper
         slidesPerView={1}
@@ -28,7 +26,7 @@ export default function SingleCategoryProducts({ category }) {
           1024: { slidesPerView: 3 },
         }}
         autoplay={{
-          delay: 5000,
+          delay: 10000,
         }}
         modules={[Pagination, Autoplay]}
         className="w-full custom-swiper"
@@ -102,14 +100,12 @@ export default function SingleCategoryProducts({ category }) {
                 <p className="text-red-500 text-sm">Out of Stock</p>
               )}
             </div>
-            <button className="bg-black text-white rounded-2xl w-full py-3 mt-4 flex items-center gap-2 justify-center cursor-pointer">
-              <CiHeart className="text-2xl" />
-              Add to WishList
-            </button>
-            <button className="bg-black text-white rounded-2xl w-full py-3 mt-4 flex items-center gap-8 justify-center cursor-pointer">
-              <BsCart4 />
-              Add to Cart
-            </button>
+            <div className="w-full flex items-center justify-between gap-3.5">
+              <AddToWishlist productId={product.documentId} />
+              <button className="bg-black text-white rounded-2xl w-full py-3 mt-4 flex items-center gap-8 justify-center cursor-pointer">
+                <BsCart4 />
+              </button>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

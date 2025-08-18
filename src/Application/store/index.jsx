@@ -17,6 +17,7 @@ export const useLoginStore = create((set) => ({
   logout: () => {
     cookies.remove("token", { path: "/" });
     set({ token: null, isLoggedIn: false });
+    window.location.reload();
   },
   syncFromCookies: () => {
     const tokenFromCookie = cookies.get("token") || null;
