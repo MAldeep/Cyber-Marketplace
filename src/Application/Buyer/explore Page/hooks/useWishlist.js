@@ -26,6 +26,7 @@ const useWishlist = () => {
       }
     })();
   }, [token]);
+  // adding to wishlist
   const add = async (productId) => {
     if (!token) {
       toast.error("You must be logged in to show wishlist");
@@ -42,6 +43,7 @@ const useWishlist = () => {
       setLoading(false);
     }
   };
+  // removing from wishlist
   const remove = async (productId) => {
     if (!token) {
       toast.error("You must be logged in to remove");
@@ -49,8 +51,8 @@ const useWishlist = () => {
     }
     setLoading(true);
     try {
-      const updated = await removeFromWishList(productId, token);
-      setWishlist(updated.products);
+      await removeFromWishList(productId, token);
+      setWishlist((prev) => prev.filter((p) => p.documentId !== productId));
       toast.success("Removed from wishlist !");
     } catch {
       toast.error("Failed to remove from wishlist !");

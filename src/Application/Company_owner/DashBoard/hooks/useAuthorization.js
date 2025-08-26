@@ -50,7 +50,7 @@ const useAuthorization = () => {
       }
     };
     chechAuth();
-  }, [navigate, token ]);
+  }, [navigate, token]);
   return { authorized, user, company, allCompanies };
 };
 export default useAuthorization;

@@ -9,6 +9,7 @@ import SelectCompany from "../Company_owner/DashBoard/UI/components/SelectCompan
 import DashboardSingleProduct from "../Company_owner/DashBoard/UI/components/DashboardSingleProduct";
 import Profile from "../Buyer/Profile/Ui/page/Profile";
 import Wishlist from "../Buyer/wishlist/Ui/page/Wishlist";
+import SingleProduct from "../Buyer/Single Product/Ui/page/SingleProduct";
 
 export default function AllRoutes() {
   return (
@@ -22,7 +23,7 @@ export default function AllRoutes() {
           {/* Buyer Routes */}
           <Route path="/explore" element={<ExplorePage/>} />
           <Route path="/wishList" element={<Wishlist/>} />
-          <Route path="/:productId" element={<h1>Single Product Page-buyer</h1>} />
+          <Route path="/:productId" element={<SingleProduct/>} />
           <Route path="/cart" element={<h1>Cart Page</h1>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/checkout" element={<h1>Checkout Page</h1>} />

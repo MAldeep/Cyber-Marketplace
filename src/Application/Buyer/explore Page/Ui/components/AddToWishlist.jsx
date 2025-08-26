@@ -14,7 +14,7 @@ export default function AddToWishlist({ productId }) {
     <button
       onClick={toggleWishlist}
       disabled={loading}
-      className={`p-2 rounded-2xl shadow-md transition-colors ${
+      className={`w-full flex justify-center p-2 rounded-2xl shadow-md transition-colors cursor-pointer ${
         isInWishlist(productId)
           ? "bg-gray-400 text-white"
           : "bg-gray-200 text-gray-600"

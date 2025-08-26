@@ -68,7 +68,7 @@ export const gettingCompanyProducts = async (token, companyId) => {
     console.error("Failed to get products:", err);
     return [];
   }
-};
+}; 
 
 // deleting product
 

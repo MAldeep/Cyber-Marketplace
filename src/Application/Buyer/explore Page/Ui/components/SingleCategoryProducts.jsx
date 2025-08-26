@@ -5,11 +5,12 @@ import "swiper/css/pagination";
 import useProductsByCat from "../../hooks/useProductsByCat";
 import { baseUrl } from "../../../../shared/baseUrl";
 import { BsCart4 } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AddToWishlist from "./AddToWishlist";
 
 export default function SingleCategoryProducts({ category }) {
   const { products } = useProductsByCat(`${category}`);
+  const navigate = useNavigate();
   return (
     <div className="w-full min-h-[40dvh] py-5 px-3 flex flex-col justify-center items-start rounded-2xl bg-gray-200 gap-2.5">
       <div className="w-full flex justify-between items-center">
@@ -33,7 +34,7 @@ export default function SingleCategoryProducts({ category }) {
       >
         {products?.map((product) => (
           <SwiperSlide
-            className="flex flex-col gap-2 bg-gray-50 rounded-2xl p-3"
+            className="flex flex-col gap-2 bg-gray-50 rounded-2xl p-3 cursor-pointer"
             key={product.documentId}
           >
             {Array.isArray(product.images) && product.images.length >= 1 && (
@@ -48,6 +49,7 @@ export default function SingleCategoryProducts({ category }) {
                 {product.images.map((img, idx) => (
                   <SwiperSlide key={idx}>
                     <img
+                      onClick={() => navigate(`/${product.documentId}`)}
                       src={baseUrl + img.url}
                       className="w-full h-[200px] object-cover rounded-2xl"
                     />
@@ -100,9 +102,9 @@ export default function SingleCategoryProducts({ category }) {
                 <p className="text-red-500 text-sm">Out of Stock</p>
               )}
             </div>
-            <div className="w-full flex items-center justify-between gap-3.5">
+            <div className="w-full flex items-center justify-between gap-3.5 mt-4">
               <AddToWishlist productId={product.documentId} />
-              <button className="bg-black text-white rounded-2xl w-full py-3 mt-4 flex items-center gap-8 justify-center cursor-pointer">
+              <button className="bg-black text-white rounded-2xl w-full py-2.5 flex items-center gap-8 justify-center cursor-pointer">
                 <BsCart4 />
               </button>
             </div>
