@@ -13,7 +13,7 @@ export default function SingleProduct() {
   if (!singleProduct) return <p>no product found ...</p>;
   return (
     <SidebarProvider>
-      <div className="w-full h-[100dvh] overflow-hidden relative">
+      <div className="w-full overflow-hidden relative">
         <SideMenuExplore />
         <header className="w-full flex flex-col gap-7 items-center justify-start relative bg-gray-100">
           <ExploreHeader />

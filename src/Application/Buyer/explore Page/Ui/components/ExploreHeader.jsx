@@ -12,7 +12,7 @@ export default function ExploreHeader() {
 
   return (
     <header className="w-full flex justify-between items-center px-[16px] py-[32px] lg:px-[160px] lg:py-[20px] bg-white border border-t-0 border-x-0 border-b-[#B5B5B5]">
-      <Link to={"/"}>
+      <Link to={"/explore"}>
         <img src={logo} />
       </Link>
       <GiHamburgerMenu

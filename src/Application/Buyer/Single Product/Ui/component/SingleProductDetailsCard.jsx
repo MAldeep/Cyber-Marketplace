@@ -8,7 +8,7 @@ import { BsCart4 } from "react-icons/bs";
 export default function SingleProductDetailsCard({ product }) {
   return (
     <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-12">
-      <div className="w-1/2">
+      <div className="w-full lg:w-1/2">
         {Array.isArray(product.images) && product.images.length >= 1 && (
           <Swiper
             autoplay={{
@@ -32,7 +32,7 @@ export default function SingleProductDetailsCard({ product }) {
           </Swiper>
         )}
       </div>
-      <div className="w-1/2 flex flex-col gap-6">
+      <div className="w-full lg:w-1/2 flex flex-col gap-6 mb-9 lg:mb-0">
         <h1 className="text-7xl font-bold text-gray-800">{product.title}</h1>
         {product.finalPrice ? (
           <div className="w-full flex justify-start items-center gap-2">
