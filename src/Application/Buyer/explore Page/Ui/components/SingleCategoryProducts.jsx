@@ -7,6 +7,7 @@ import { baseUrl } from "../../../../shared/baseUrl";
 import { BsCart4 } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import AddToWishlist from "./AddToWishlist";
+import AddToCartBtn from "../../../Cart/Ui/components/AddToCartBtn";
 
 export default function SingleCategoryProducts({ category }) {
   const { products } = useProductsByCat(`${category}`);
@@ -104,9 +105,7 @@ export default function SingleCategoryProducts({ category }) {
             </div>
             <div className="w-full flex items-center justify-between gap-3.5 mt-4">
               <AddToWishlist productId={product.documentId} />
-              <button className="bg-black text-white rounded-2xl w-full py-2.5 flex items-center gap-8 justify-center cursor-pointer">
-                <BsCart4 />
-              </button>
+              <AddToCartBtn productId={product.documentId} />
             </div>
           </SwiperSlide>
         ))}

@@ -10,6 +10,7 @@ import DashboardSingleProduct from "../Company_owner/DashBoard/UI/components/Das
 import Profile from "../Buyer/Profile/Ui/page/Profile";
 import Wishlist from "../Buyer/wishlist/Ui/page/Wishlist";
 import SingleProduct from "../Buyer/Single Product/Ui/page/SingleProduct";
+import Cart from "../Buyer/Cart/Ui/page/Cart";
 
 export default function AllRoutes() {
   return (
@@ -21,22 +22,25 @@ export default function AllRoutes() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* Buyer Routes */}
-          <Route path="/explore" element={<ExplorePage/>} />
-          <Route path="/wishList" element={<Wishlist/>} />
-          <Route path="/:productId" element={<SingleProduct/>} />
-          <Route path="/cart" element={<h1>Cart Page</h1>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/wishList" element={<Wishlist />} />
+          <Route path="/:productId" element={<SingleProduct />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<h1>Checkout Page</h1>} />
           <Route path="/tracking" element={<h1>Tracking Orders</h1>} />
           {/* Compnay Owner Routes */}
+          <Route path="/creatingCompanyProfile" element={<NewCompany />} />
           <Route
-            path="/creatingCompanyProfile"
-            element={<NewCompany/>}
+            path="/companyProfile"
+            element={<h1>Single company profile</h1>}
           />
-          <Route path="/companyProfile" element={<h1>Single company profile</h1>}/>
-          <Route path="/dashboard" element={<DashBoard/>} />
-          <Route path="/dashboard/:productId" element={<DashboardSingleProduct/>}/>
-          <Route path="/selectCompany" element={<SelectCompany/>}/>
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route
+            path="/dashboard/:productId"
+            element={<DashboardSingleProduct />}
+          />
+          <Route path="/selectCompany" element={<SelectCompany />} />
           <Route path="/allEmployees" element={<h1>All Employees Page</h1>} />
           <Route
             path="/addingNewEmployee"
