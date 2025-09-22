@@ -7,7 +7,7 @@ export default function Wishlist() {
   return (
     <div>
       <SidebarProvider>
-        <div className="w-full overflow-hidden relative">
+        <div className="w-full overflow-hidden relative min-h-dvh">
           <SideMenuExplore />
           <header className="w-full flex flex-col gap-7 items-center justify-start relative bg-gray-100">
             <ExploreHeader />

@@ -6,7 +6,6 @@ import { BsCart4 } from "react-icons/bs";
 import AddToWishlist from "../../../explore Page/Ui/components/AddToWishlist";
 
 export default function WishlistItemCard({ item }) {
-  console.log(item);
   return (
     <div className="w-full flex flex-col lg:flex-row gap-3.5 lg:gap-0 justify-between items-center border-b-2 border-b-gray-200 pb-2.5 pt-10">
       <div className="w-full lg:w-1/3">
@@ -48,9 +47,9 @@ export default function WishlistItemCard({ item }) {
           )}
         </div>
         <p className="text-2xl text-gray-600">{item.description}</p>
-        <p className="text-gray-400">
+        <h6 className="text-gray-400">
           Provided by : <p className="text-2xl text-gray-600">" {item.company.name} "</p>
-        </p>
+        </h6>
       </div>
       <div className="w-full lg:w-1/3 flex flex-col gap-4">
         <AddToWishlist productId={item.documentId} />

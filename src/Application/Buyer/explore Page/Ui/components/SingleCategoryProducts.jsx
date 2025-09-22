@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import useProductsByCat from "../../hooks/useProductsByCat";
 import { baseUrl } from "../../../../shared/baseUrl";
-import { BsCart4 } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import AddToWishlist from "./AddToWishlist";
 import AddToCartBtn from "../../../Cart/Ui/components/AddToCartBtn";

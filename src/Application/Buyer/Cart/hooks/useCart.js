@@ -25,8 +25,7 @@ const useCart = () => {
       );
       let updated;
       if (existInCart) {
-        updated = await addToCart(productId, token, 1);
-        toast.success("Item already in cart and quantity is now increased !");
+        toast.success("Item already in cart !");
       } else {
         updated = await addToCart(productId, token , 1);
         toast.success("Added to cart !");
